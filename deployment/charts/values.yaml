@@ -1,0 +1,15 @@
+
+name: firesdk-api
+
+image: emmachang00000/firesdk-api
+
+
+service:
+  - name: firesdk-api
+    httpTargetPort: 12345
+
+ingressroute:
+  - certResolver: cf
+    name: firesdk-api
+    domain: firesdk-api.emmatest.online
+    service: firesdk-api

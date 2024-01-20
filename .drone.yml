@@ -1,0 +1,38 @@
+---
+kind: pipeline
+name: pwa-node
+type: kubernetes
+steps:
+  - name: publish
+    image: plugins/docker
+    settings:
+      dockerfile: deployment/Dockerfile
+      repo: emmachang00000/firesdk-api
+      tags: 
+        - latest
+      username: 
+        from_secret: docker_username
+      password: 
+        from_secret: docker_password
+  - name: deploy
+    image: pelotech/drone-helm3
+    settings:
+      api_server: 
+          from_secret: host
+      chart: ./deployment/charts
+      kube_certificate: 
+          from_secret: ca
+      kube_service_account: 
+          from_secret: account
+      kube_token: 
+          from_secret: token
+      mode: upgrade
+      namespace: main
+      release: firesdk-api
+      values_files: ./deployment/charts/values.yaml
+    
+trigger:
+  branch:
+    - main
+  event:
+    - push
