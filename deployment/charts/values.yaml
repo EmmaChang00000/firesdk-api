@@ -13,3 +13,9 @@ ingressroute:
     name: firesdk-api
     domain: firesdk-api.emmatest.online
     service: firesdk-api
+
+envSecret:
+- name: FCM_ACCESS_TOKEN
+  secretName: fcm-pair
+  secretKey: access-token
+  
