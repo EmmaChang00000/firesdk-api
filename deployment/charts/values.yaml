@@ -14,8 +14,8 @@ ingressroute:
     domain: firesdk-api.emmatest.online
     service: firesdk-api
 
-envSecret:
-- name: FCM_ACCESS_TOKEN
-  secretName: fcm-service
-  secretKey: access-token
+mountSecret:
+- name: fcm-service
+  readOnly: true
+  mountPath: /app/fcm-service-account.json
   

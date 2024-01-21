@@ -5,7 +5,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const admin = require("firebase-admin");
-const serviceAccount = JSON.parse(process.env.FCM_ACCESS_TOKEN);
+const serviceAccount = require("./fcm-service-account.json");
 
 const app = express();
 const users = [];

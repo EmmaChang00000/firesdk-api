@@ -17,12 +17,11 @@ spec:
       - env:
         - name: Revision
           value: "{{ .Release.Revision }}"
-        {{- range .Values.envSecret }}
-        - name: {{ .name }}
-          valueFrom:
-            secretKeyRef:
-              name: {{ .secretName }}
-              key: {{ .secretKey }}
-        {{- end }}
         name: {{ .Values.name }}
         image: {{ .Values.image }}
+        volumeMounts:
+        {{- range .Values.mountSecret }}
+        - name: {{ .Values.name }}
+          mountPath: {{ .Values.mountPath }}
+          readOnly: true
+        {{- end }}
