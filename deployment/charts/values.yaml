@@ -16,6 +16,6 @@ ingressroute:
 
 envSecret:
 - name: FCM_ACCESS_TOKEN
-  secretName: fcm-pair
+  secretName: fcm-service
   secretKey: access-token
   
