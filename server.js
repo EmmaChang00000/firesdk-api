@@ -69,11 +69,11 @@ app.post("/api/push", (req, res) => {
     .map((user) => {
       const m = {
         token: user.token,
-        ...req.body.content,
         webpush: {
           headers: {
             "Content-Encoding": "aesgcm",
           },
+          ...req.body.content,
         },
       };
       return m;
@@ -86,9 +86,12 @@ app.post("/api/push", (req, res) => {
           .messaging()
           .send(receiveMessage)
           .then((response) => {
+            console.log(44, receiveMessage);
+            console.log(11, response);
             return "success";
           })
           .catch((error) => {
+            console.log(22, error);
             return `${receiveMessage.id}`;
           })
       ),
