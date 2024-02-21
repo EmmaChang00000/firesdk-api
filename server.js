@@ -86,12 +86,9 @@ app.post("/api/push", (req, res) => {
           .messaging()
           .send(receiveMessage)
           .then((response) => {
-            console.log(44, receiveMessage);
-            console.log(11, response);
             return "success";
           })
           .catch((error) => {
-            console.log(22, error);
             return `${receiveMessage.id}`;
           })
       ),
