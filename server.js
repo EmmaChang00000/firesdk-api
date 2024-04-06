@@ -17,6 +17,10 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
 
+/**
+ * token:
+ * c3l05ZervYFF6O-cQoXWbm:APA91bF8QDvmPAedLKeN9_P7dVy-BUeGJ6mBeJXbr-VnroWgz2wAAL9MNO_tQLh9oAImHB5BHYCx0njP-pZy-7ww2ikhJoR52onHRyXvK_nP9kk_Jszu1DTw_bEsSQ5JwzweVnblheEo
+ */
 app.post("/api/register", (req, res) => {
   if (!req.body.token) {
     return res.status(200).json({
@@ -46,6 +50,17 @@ app.post("/api/register", (req, res) => {
   });
 });
 
+/**
+ * content:{
+ *  notification:{
+ *    body: "dddd",
+ *    data: {
+ *      url: "https://www.google.com"
+ *    },
+ *    title: "標題ABC"
+ *  }
+ * }
+ */
 app.post("/api/push", (req, res) => {
   if (!req.body.group) {
     return res.status(200).json({
